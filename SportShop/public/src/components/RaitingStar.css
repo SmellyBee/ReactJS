@@ -1,0 +1,18 @@
+.star-rating
+{
+    width: 100%;
+    margin: 20px 0 45px;
+}
+.star
+{
+    height: 50px;
+    width: 50px;
+    border: 0;
+    background-color: white;
+    cursor: pointer;
+}
+
+.star:hover
+{
+    color: gold;
+}

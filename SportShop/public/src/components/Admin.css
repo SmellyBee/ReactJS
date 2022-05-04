@@ -1,0 +1,31 @@
+.cards-user {
+    padding: 4rem;
+    background: #fff;
+}
+  
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+  
+.cards__container_admin {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 1120px;
+    width: 90%;
+    margin: 0 auto;
+}
+  
+.cards__wrapper_admin {
+    width: 100%;
+    margin: 50px 0 45px;
+}
+  
+.cards__items_admin {
+    margin-bottom: 24px;
+    display: flex;
+    flex: 1;
+    margin: 0 1rem;
+    border-radius: 10px;
+}
