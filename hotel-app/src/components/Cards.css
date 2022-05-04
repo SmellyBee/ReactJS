@@ -1,0 +1,33 @@
+
+.carddiv
+{
+    margin-right: 10px;
+    margin-top: 10px;
+    border: 2px solid black;
+    display:block;
+    width: 320px;
+    height: 300px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+    -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+    filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+}
+
+.carddiv:hover
+{
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+.image
+{
+    width: 200px;
+    height: 200px;
+    margin: center;
+}
+
+.ime_grada
+{
+    color:rgb(247, 37, 37);
+    font-family: "Lucida Console", "Courier New", monospace;
+}

@@ -1,0 +1,51 @@
+import React from 'react';
+import Cards from '../components/Cards';
+import './AdminHome.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function AllHotels() {
+
+    const [hotels,setHotels]=useState([]);
+
+    useEffect(() => {
+
+        GetingHotels();
+
+    },[]);
+
+    const GetingHotels=async()=>
+    {
+        const res=await axios.get("http://localhost/proba/index.php",{
+        method:"GET",
+        headers: { "Content-Type": "application/json", }
+        }
+        )
+         setHotels(res.data);
+    }
+
+    return (
+        <div className='maindiv'>
+            {
+                hotels.map(obj=>(
+    
+                    <Cards 
+
+                        name={obj.hotelName}
+                        namesecond={obj.cityName} 
+                        street={obj.streetAndNumber} 
+                        star={obj.noStars}
+                        img="./hotel.jpg" 
+                        url='/updatehotel'>
+
+                     </Cards>
+                    
+                    ))
+            }
+
+            <Cards name="Hotel" namesecond="Add new hotel" img="./addhotel.jpg" url='/newhotel'></Cards>
+        </div>
+    );
+}
+
+export default AllHotels;

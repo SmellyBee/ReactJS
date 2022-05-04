@@ -1,0 +1,109 @@
+.form_div
+{
+    border: 1px solid black;
+	background: #fff;
+	width: 400px;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 25px;
+	margin: 8% auto 0;
+	position: relative;
+	z-index: 1;
+	border-top: 5px solid #f5ba1a;-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    -webkit-transition: none;
+    transition: none;
+    -webkit-animation: expand 0.8s 0.6s ease-out forwards;
+    animation: expand 0.8s 0.6s ease-out forwards;
+    text-align: center;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+}
+
+.input_field {
+    position: relative;
+    margin-bottom: 20px;
+    -webkit-animation: bounce 0.6s ease-out;
+     animation: bounce 0.6s ease-out;
+}
+
+.input
+{
+    height: 30px;
+    font-size: 16px;
+}
+
+.input:focus
+{
+    -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      border: 2px solid #f5ba1a;;
+      background: #fafafa;
+      outline: none;
+      
+}
+
+
+select {
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    padding: 0px 15px;
+    cursor: pointer;
+    color: #7b7b7b;
+    border: 1px solid gray;
+    border-radius: 0;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: all 0.2s ease;
+}
+
+select:focus
+{
+    -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      border: 2px solid #f5ba1a;
+      background: #fafafa;
+      outline: none;
+      color:black;
+}
+
+.button
+{
+        background: #f5ba1a;
+		height: 35px;
+		line-height: 35px;
+		width: 100%;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		color: #fff;
+		font-size: 1.1em;
+		margin-bottom: 10px;
+		-webkit-transition: all 0.30s ease-in-out;
+		-moz-transition: all 0.30s ease-in-out;
+		-ms-transition: all 0.30s ease-in-out;
+		transition: all 0.30s ease-in-out;
+        margin-top: 20px;
+}
+.button:hover
+{
+    transform: scale(1.1);
+    background-color: #cda024;
+}
+.error
+{
+    height: 30px;
+    font-size: 16px;
+    border: 2px solid red;
+    background: #fafafa;
+    outline: none;
+}
