@@ -1,0 +1,144 @@
+.cardimg {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    
+    margin-bottom: 20px;
+  }
+
+.images
+{
+    width:600px;
+    height: 400px;
+}
+  
+.cardimg::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 900;
+  
+    display: block;
+    width: 100%;
+    height: 100%;
+  
+    background-color: rgba(140, 22, 115, 0.2);
+  }
+  
+.card_part {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 7;
+  
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+    transform: translateX( 700px );
+    animation: opaqTransition 20s cubic-bezier(0, 0, 0, 0.97) infinite;
+  }
+  
+  
+  .card_part.card_part-two {
+    z-index: 6;
+    animation-delay: 5s;
+  }
+  
+  .card_part.card_part-three {
+    z-index: 5;
+    animation-delay: 10s;
+  }
+  
+  .card_part.card_part-four {
+    z-index: 4;
+    animation-delay: 15s;
+  }
+  
+@keyframes opaqTransition {
+    3% { transform: translateX( 0 ); }
+    25% { transform: translateX( 0 ); }
+    28% { transform: translateX( -700px ); }
+    100% { transform: translateX( -700px ); }
+}
+
+
+.divmain
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+.roominfo
+{
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.info
+{
+    padding-top: 10px;
+    font-size: 20px;
+    word-wrap: break-word;
+    padding-left: 10px;
+    padding-right:10px ;
+}
+.titleinfo
+{
+    font-size: 30px;
+    color:#f5ba1a;
+}
+
+.ReserveButton
+{
+        background: #f5ba1a;
+		height: 35px;
+		line-height: 35px;
+		width: 300px;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		color: #fff;
+		font-size: 1.1em;
+		margin-bottom: 10px;
+		-webkit-transition: all 0.30s ease-in-out;
+		-moz-transition: all 0.30s ease-in-out;
+		-ms-transition: all 0.30s ease-in-out;
+		transition: all 0.30s ease-in-out;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+.ReserveButton:hover
+{
+    transform: scale(1.1);
+    background-color: #cda024;
+}
+
+.cost
+{
+    border: 1px solid rgb(180, 162, 162);
+    background-color: rgb(186, 9, 9);
+    color: white;
+    width: 150px;
+    height: 50px;
+    padding-left: 15px;
+    padding-bottom: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}

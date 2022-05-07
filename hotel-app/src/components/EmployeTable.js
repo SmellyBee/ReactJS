@@ -6,16 +6,6 @@ import axios from 'axios';
 
 function EmployeeTable(props){
 
-    const[employee,setEmployee]=useState([
-        {ime:'Pera',prezime:'Peric',radnomesto:'Cistac',josnesto:'Nesto'},
-        {ime:'Pera',prezime:'Peric',radnomesto:'Cistac',josnesto:'Nesto'},
-        {ime:'Pera',prezime:'Peric',radnomesto:'Cistac',josnesto:'Nesto'},
-        {ime:'Pera',prezime:'Peric',radnomesto:'Cistac',josnesto:'Nesto'},
-        {ime:'Pera',prezime:'Peric',radnomesto:'Cistac',josnesto:'Nesto'},
-        {ime:'Pera',prezime:'Peric',radnomesto:'Cistac',josnesto:'Nesto'},
-        {ime:'Pera',prezime:'Peric',radnomesto:'Cistac',josnesto:'Nesto'},
-    ]);
-
     return(
         <>
         <div class="container">
@@ -27,16 +17,16 @@ function EmployeeTable(props){
         <div class="col col-1">Jos nesto</div>
         </li>
         {
-            employee.map(obj=>(
+           props.emp.map(obj=>(
                 <>
                 <li class="table-row">
-                <div class="col col-1" data-label="Room capacity">{obj.ime}</div>
-                <div class="col col-1" data-label="Room number">{obj.prezime}</div>
-                <div class="col col-1" data-label="Cost per day">{obj.radnomesto}</div>
-                <div class="col col-1" data-label="Jos nesto">{obj.josnesto}</div>
+                <div class="col col-1" data-label="Room capacity">{obj.name}</div>
+                <div class="col col-1" data-label="Room number">{obj.lastName}</div>
+                <div class="col col-1" data-label="Cost per day">{obj.workspace}</div>
+                <div class="col col-1" data-label="Jos nesto">{obj.hotelStreetAndNumber}</div>
                 </li>
                 </>
-            ))
+            )) 
         }
         </ul>
         </div>

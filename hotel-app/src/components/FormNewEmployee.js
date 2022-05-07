@@ -1,9 +1,10 @@
+import axios from 'axios';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import './FormNewHotel.css'
 
-function FormNewEmployee(){
+function FormNewEmployee(props){
   
      const state={
          name:'',
@@ -50,8 +51,24 @@ function FormNewEmployee(){
           alert("Fiil red fields");
           else
           { 
-            alert("EEEE");   
-          }
+            const requestOptions = {
+              method : 'POST',
+              mode : 'no-cors',
+              headers : {
+                "Content-Type" : "application/json",
+               
+              },
+              body: JSON.stringify({
+                'name' : state.name,
+                'lastName' : state.lastname,
+                'workspace' : state.position,
+                'hotelStreetAndNumber' : props.street
+              })
+            };
+            fetch('http://localhost/proba/CRUD_employee.php',requestOptions);
+            props.emp();
+           }
+            
   
       }
       return(
@@ -60,15 +77,15 @@ function FormNewEmployee(){
               <h2>Add new Employee</h2>
   
               <div class="input_field">
-              <input  placeholder="Name Of Hotel" required  className='input' onChange={getValue} name='employee_name' id='1'/>
+              <input  placeholder="Name Of Employee" required  className='input' onChange={getValue} name='employee_name' id='1'/>
               </div>
   
               <div class="input_field">
-              <input placeholder="Name Of City" required  className='input' onChange={getValue} name='employee_lastname' id='2'/>
+              <input placeholder="LastName Of Employee" required  className='input' onChange={getValue} name='employee_lastname' id='2'/>
               </div>
   
               <div class="input_field">
-              <input placeholder="Street and number" required  className='input' onChange={getValue} name='employee_position' id='3'/>
+              <input placeholder="Employee position" required  className='input' onChange={getValue} name='employee_position' id='3'/>
               </div>
   
               <button className='button' onClick={handleSubmit}>Add new Employee</button>
