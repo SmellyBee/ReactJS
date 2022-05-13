@@ -2,8 +2,12 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import './Home.css'
 import Footer from '../components/Footer';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Home() {
+
+    const navigate=useNavigate();
+
     return (
         <>
         <Navigation></Navigation>
@@ -23,8 +27,8 @@ function Home() {
             <div class='Content'>
                 <h2 class="contenttitle">You are not registered yet?</h2>
                 <p class='contenttext'>Apply quickly and easily</p>
-                <button class='buttonSignUp'>Sign Up</button>
-                <button class='buttonSignUp'>Login</button>
+                <button class='buttonSignUp' onClick={()=>navigate('/signup')}>Sign Up</button>
+                <button class='buttonSignUp' onClick={()=>navigate('/login')}>Login</button>
             </div>
 
         </div>

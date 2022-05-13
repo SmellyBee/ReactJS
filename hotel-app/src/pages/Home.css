@@ -9,17 +9,21 @@
     margin-top: 20px;
     margin-left: 20px;
     margin-bottom: 10px;
+    overflow: hidden;
     
 }
 
 .contentdiv
 {
-    background-image: url("../newformbg.jpg");
-    background-repeat: no-repeat;
+    background: url("../newformbg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+    
     display: flex;
     justify-content: center;
-    height: 600px;
+    height: 750px;
     flex-wrap: wrap;
 }
 
@@ -70,10 +74,30 @@ body
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+    display: block;
 }
 
 .buttonSignUp:hover
 {
     transform: scale(1.1);
     background-color: #cda024;
+}
+
+.link
+{
+    color: #f5ba1a;
+}
+
+.ContentRoomTable
+{
+    text-align: center;
+    border: 2px solid black;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    width: 500px;
+    height: 400px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    overflow: auto;
 }

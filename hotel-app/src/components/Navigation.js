@@ -41,10 +41,10 @@ const navCancel=()=>{
       </div>
       
       <nav class="nav is-active" id="nav">
-        <a href="#" class="nav-link">Home</a>
-        <a href="#" class="nav-link">Hotels</a>
+        <a href="/" class="nav-link">Home</a>
+        <a href="/allhotels-view" class="nav-link">Hotels</a>
         <a href="#" class="nav-link">Activities</a>
-        <a href="#" class="nav-link">Login/Sign Up</a>
+        <a href="/login" class="nav-link">Login/Sign Up</a>
       </nav>
       
     </header>

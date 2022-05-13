@@ -4,3 +4,11 @@
     flex-flow: row wrap;
     justify-content: center;
 }
+
+.divAllHotelsUsers
+{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+}

@@ -12,6 +12,10 @@ import Employees from './pages/Employees';
 import Employees_In_One_Hotel from './pages/Employees-In-One-Hotel';
 import SelectedRoom from './pages/SelectedRoom';
 import Home from './pages/Home';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import AllHotelUser from './pages/AllHotelUser';
+import SpecificHotelUser from './pages/SpecificHotelUser';
 
 function App() {
   return (
@@ -28,6 +32,10 @@ function App() {
       <Route path='/employees' element={<Employees/>}></Route>
       <Route path='/employees_in_one_hotel' element={<Employees_In_One_Hotel/>}></Route>
       <Route path='/room' element={<SelectedRoom/>}></Route>
+      <Route path='/login' element={<Login/>}></Route>
+      <Route path='/signup' element={<SignUp/>}></Route>
+      <Route path='/allhotels-view' element={<AllHotelUser/>}></Route>
+      <Route path='/specific-hotel' element={<SpecificHotelUser/>}></Route>
     </Routes>
   </Router>
 
