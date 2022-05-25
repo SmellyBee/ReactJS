@@ -22,19 +22,21 @@ function AllHotels() {
         }
         )
          setHotels(res.data);
+         console.log(res.data);
     }
 
     return (
         <div className='maindiv'>
             {
                 hotels.map(obj=>(
-    
+
                     <Cards 
 
                         name={obj.hotelName}
                         namesecond={obj.cityName} 
                         street={obj.streetAndNumber} 
                         star={obj.noStars}
+                        des={obj.hotelDescription}
                         img="./hotel.jpg" 
                         url='/updatehotel'>
 

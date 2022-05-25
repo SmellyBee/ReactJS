@@ -8,14 +8,15 @@ function Cards(props) {
     return (
         <>
         
-            <div className='carddiv' onClick={() =>
+            <div className='carddiv' onClick={() => 
             navigate(props.url,{
-            state:{
-            hotel_name:props.name,
-            city_name:props.namesecond,
-            street_name:props.street,
-            star_number:props.star
-            }})}>
+                state:{
+                hotel_name:props.name,
+                city_name:props.namesecond,
+                street_name:props.street,
+                star_number:props.star,
+                hotel_description:props.des
+                }})}>
                 <img src={props.img} className='image'></img>
                 <h2>{props.name}</h2>
                 <p className='ime_grada'>{props.namesecond}</p>

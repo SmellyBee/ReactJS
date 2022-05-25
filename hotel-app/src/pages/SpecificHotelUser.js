@@ -14,7 +14,7 @@ function SpecificHotelUser() {
     const location=useLocation();
 
     let {street_name}=location.state;
-    
+    let {hotel_description}=location.state;
 
     return (
         <>
@@ -22,7 +22,7 @@ function SpecificHotelUser() {
 
         <div class='contentdiv'>
             <div class='Content'>
-            <p>{street_name}</p>
+            <p>{hotel_description}</p>
             </div>
             <div class='ContentRoomTable'>
 

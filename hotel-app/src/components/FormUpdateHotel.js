@@ -12,6 +12,7 @@ function FormUpdateHotel(props){
   let { city_name } = location.state
   let {street_name}=location.state
   let {star_number}=location.state
+  let {hotel_description}=location.state
 
   let navigate=useNavigate();
 
@@ -20,7 +21,8 @@ function FormUpdateHotel(props){
        city:city_name,
        street:street_name,
        oldstreet:street_name,
-       star:star_number
+       star:star_number,
+       description:hotel_description
    };
 
    const getValue=(event)=>{
@@ -32,6 +34,8 @@ function FormUpdateHotel(props){
        state.city=value
        if(name=='street')
        state.street=value
+       if(name=='description')
+       state.description=value
     }
     const handleSubmit=(event)=>{
         let check=0;
@@ -52,6 +56,12 @@ function FormUpdateHotel(props){
           check++;
           let y=document.getElementById('3');
           y.className='error';
+        }
+        if(state.description=='')
+        {
+          check++;
+          let y=document.getElementById('4');
+          y.className='errorText';
         }
         if(check>0)
         alert("Fiil red fields");
@@ -76,6 +86,10 @@ function FormUpdateHotel(props){
 
             <div class="input_field">
             <input placeholder="Street and number" required  className='input' defaultValue={street_name} onChange={getValue} name='street' id='3'/>
+            </div>
+
+            <div class="input_field">
+            <textarea placeholder="Add description text" required  className='input_description' defaultValue={hotel_description} onChange={getValue} name='description' id='4'/>
             </div>
 
             <div class="select">

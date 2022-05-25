@@ -1,7 +1,10 @@
 import React from 'react';
 import './Navigation.css';
+import { useNavigate } from 'react-router-dom';
 function Navigation() {
-    
+
+const navigate=useNavigate();  
+
 const navBurger=()=>{
 
   const navV = document.getElementById("nav");
@@ -41,10 +44,10 @@ const navCancel=()=>{
       </div>
       
       <nav class="nav is-active" id="nav">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/allhotels-view" class="nav-link">Hotels</a>
-        <a href="#" class="nav-link">Activities</a>
-        <a href="/login" class="nav-link">Login/Sign Up</a>
+        <a onClick={()=>navigate('/')} class="nav-link">Home</a>
+        <a onClick={()=>navigate('/allhotels-view')} class="nav-link">Hotels</a>
+        <a onClick={()=>navigate('/activities')} class="nav-link">Activities</a>
+        <a onClick={()=>navigate('/login')} class="nav-link">Login/Sign Up</a>
       </nav>
       
     </header>

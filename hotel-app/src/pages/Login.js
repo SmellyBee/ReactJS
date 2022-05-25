@@ -79,7 +79,7 @@ function Login() {
 
             <button class='buttonSignUp' onClick={handleSubmit}>Login</button>
 
-            <a href="/signup" class="link">Sign Up</a>
+            <a onClick={()=>navigate('/signup')}  class="link">Sign Up</a>
 
             </div>
         </div>

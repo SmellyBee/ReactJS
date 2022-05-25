@@ -16,6 +16,10 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import AllHotelUser from './pages/AllHotelUser';
 import SpecificHotelUser from './pages/SpecificHotelUser';
+import FormUpdateEmployee from './components/FormUpdateEmpoloyee';
+import EmployeeInterface from './pages/EmployeeInterface';
+import Activities from './pages/Activities';
+
 
 function App() {
   return (
@@ -36,6 +40,9 @@ function App() {
       <Route path='/signup' element={<SignUp/>}></Route>
       <Route path='/allhotels-view' element={<AllHotelUser/>}></Route>
       <Route path='/specific-hotel' element={<SpecificHotelUser/>}></Route>
+      <Route path='/update-employee' element={<FormUpdateEmployee/>}></Route>
+      <Route path='/employee-home' element={<EmployeeInterface/>}></Route>
+      <Route path='/activities' element={<Activities/>}></Route>
     </Routes>
   </Router>
 

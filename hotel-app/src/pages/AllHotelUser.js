@@ -45,6 +45,7 @@ function AllHotelUser() {
                             namesecond={obj.cityName} 
                             street={obj.streetAndNumber} 
                             star={obj.noStars}
+                            des={obj.hotelDescription}
                             img="./hotel.jpg" 
                             url='/specific-hotel'>
 

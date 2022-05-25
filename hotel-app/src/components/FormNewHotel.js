@@ -8,7 +8,7 @@ function FormNewHotel(){
 
   const navigate=useNavigate();
 
-  const addHotel = (hotelName,cityName,noStars,streetAndNumber) => {
+  const addHotel = (hotelName,cityName,noStars,streetAndNumber,hotelDescription) => {
     const requestOptions = {
       method : 'POST',
       mode : 'no-cors',
@@ -20,7 +20,8 @@ function FormNewHotel(){
         'hotelName' : hotelName,
         'cityName' : cityName,
         'noStars' : noStars,
-        'streetAndNumber' : streetAndNumber
+        'streetAndNumber' : streetAndNumber,
+        'hotelDescription': hotelDescription
       })
     };
     fetch('http://localhost/proba/index.php',requestOptions);
@@ -30,7 +31,8 @@ function FormNewHotel(){
        hotel:'',
        city:'',
        street:'',
-       star:'1'
+       star:'1',
+       description:''
    };
 
    const getOption=(event)=>{
@@ -46,6 +48,8 @@ function FormNewHotel(){
        state.city=value
        if(name=='street')
        state.street=value
+       if(name=='description')
+       state.description=value
     }
     const handleSubmit=(event)=>{
         let check=0;
@@ -67,11 +71,17 @@ function FormNewHotel(){
           let y=document.getElementById('3');
           y.className='error';
         }
+        if(state.description=='')
+        {
+          check++;
+          let y=document.getElementById('4');
+          y.className='errorText';
+        }
         if(check>0)
         alert("Fiil red fields");
         else
         { 
-        addHotel(state.hotel,state.city,state.star,state.street);
+        addHotel(state.hotel,state.city,state.star,state.street,state.description);
          navigate('/allhotels');   
         }
 
@@ -91,6 +101,10 @@ function FormNewHotel(){
 
             <div class="input_field">
             <input placeholder="Street and number" required  className='input' onChange={getValue} name='street' id='3'/>
+            </div>
+
+            <div class="input_field">
+            <textarea placeholder="Add description text" required  className='input_description' onChange={getValue} name='description' id='4'/>
             </div>
 
             <div class="select" id="4">

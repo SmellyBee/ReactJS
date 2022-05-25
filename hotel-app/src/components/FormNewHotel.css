@@ -37,6 +37,24 @@
     font-size: 16px;
 }
 
+.input_description
+{
+    height: 80px;
+    width:  320px ;
+    font-size: 16px;
+    resize: none;
+}
+
+.input_description:hover
+{
+    -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      -moz-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
+      border: 2px solid #f5ba1a;;
+      background: #fafafa;
+      outline: none;
+}
+
 .input:focus
 {
     -webkit-box-shadow: 0 0 2px 1px rgba(255, 169, 0, 0.5);
@@ -103,6 +121,16 @@ select:focus
 {
     height: 30px;
     font-size: 16px;
+    border: 2px solid red;
+    background: #fafafa;
+    outline: none;
+}
+.errorText
+{
+    height: 80px;
+    width:  320px ;
+    font-size: 16px;
+    resize: none;
     border: 2px solid red;
     background: #fafafa;
     outline: none;
