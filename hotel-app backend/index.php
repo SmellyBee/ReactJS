@@ -35,8 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == "GET")
         $c=utf8_encode($doc['cityName']);
         $s=utf8_encode($doc['noStars']);
         $n=utf8_encode($doc['streetAndNumber']);
+        $d=utf8_encode($doc['hotelDescription']);
         
-        $list[] = array(utf8_encode('hotelName') => $h, utf8_encode('cityName') => $c,utf8_encode('noStars')=>$s,utf8_encode('streetAndNumber')=>$n);
+        $list[] = array(utf8_encode('hotelName') => $h, utf8_encode('cityName') => $c,utf8_encode('noStars')=>$s,
+        utf8_encode('streetAndNumber')=>$n,utf8_encode('hotelDescription')=>$d);
         array_push($arr_data,$list[0]);
         unset($list);
     }
@@ -52,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
     
     $result = $tHotels->insertOne(['hotelName' => $data['hotelName'],'cityName' => $data['cityName'],'noStars' => $data['noStars'],
-    'streetAndNumber' => $data['streetAndNumber']]);
+    'streetAndNumber' => $data['streetAndNumber'],'hotelDescription'=>$data['hotelDescription']]);
     
 }
 

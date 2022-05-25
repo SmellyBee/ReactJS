@@ -17,7 +17,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 {     
     $data = json_decode(file_get_contents('php://input'), true);
   
-        $result = $tEmp->insertOne(['name' => $data['name'],'lastName'=>$data['lastName'],'workspace' => $data['workspace'],'hotelStreetAndNumber' => $data['hotelStreetAndNumber']]);
+        $result = $tEmp->insertOne(['name' => $data['name'],'lastName'=>$data['lastName'],'workspace' => $data['workspace'],
+        'workingTimeStart'=>$data['workingTimeStart'] ,'username'=>$data['username'],'password'=>$data['password']
+        ,'hotelStreetAndNumber' => $data['hotelStreetAndNumber']]);
 
 }
 
@@ -34,10 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] == "GET")
         $el['name'] = $doc->name;
         $el['workspace'] = $doc->workspace;
         $el['lastName'] = $doc->lastName;
+        $el['workingTimeStart'] = $doc->workingTimeStart;
+        $el['username']= $doc->username;
+        $el['password']= $doc->password;
         $el['hotelStreetAndNumber'] = $doc->hotelStreetAndNumber;
+
         array_push($arr_data,$el);
     }
     echo(json_encode($arr_data));
 }
+
+
 
 ?>
