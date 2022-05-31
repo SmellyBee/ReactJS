@@ -21,7 +21,7 @@ function AllHotelUser() {
 
     const GetingHotels=async()=>
     {
-        const res=await axios.get("http://localhost/proba/index.php",{
+        const res=await axios.get("http://localhost/proba/hotels-user.php",{
         method:"GET",
         headers: { "Content-Type": "application/json", }
         }

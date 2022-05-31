@@ -17,9 +17,41 @@ function SignUp() {
         firstname:'',
         lastname:'',
         zipCode:'',
-
-        
     };
+
+    const res = async ()=>{
+
+      const requestOptions = {
+        method : 'POST',
+        //mode : 'no-cors',
+        headers : {
+          "Content-Type" : "application/json",
+        },
+        body: JSON.stringify({
+          'firstName' : state.firstname,
+          'lastName' : state.lastname,
+          'email' : state.email,
+          'username' : state.username,
+          'password' : state.password,
+          'zipCode' : state.zipCode
+        })
+      };
+
+    const res= await fetch('http://localhost/proba/createGuest.php',requestOptions);
+    if(res.status == 201)
+    {
+      alert('Username alrady exists');
+      let x=document.getElementById('3');
+      x.className='error';
+      x.value='';
+    }
+    else
+    {
+      alert('You are Registered');
+      navigate('/');
+    }
+  }
+
     const getValue=(event)=>{
         const name=event.target.name;
         const value=event.target.value;
@@ -88,23 +120,8 @@ function SignUp() {
         alert("Fiil red fields");
         else
         { 
-          const requestOptions = {
-            method : 'POST',
-            mode : 'no-cors',
-            headers : {
-              "Content-Type" : "application/json",
-            },
-            body: JSON.stringify({
-              'firstName' : state.firstname,
-              'lastName' : state.lastname,
-              'email' : state.email,
-              'username' : state.username,
-              'password' : state.password,
-              'zipCode' : state.zipCode
-            })
-          };
-          fetch('http://localhost/proba/createGuest.php',requestOptions).then(navigate('/'));
-         }
+          res();
+        }
     }
 
     return (

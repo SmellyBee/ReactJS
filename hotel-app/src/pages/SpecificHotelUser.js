@@ -15,6 +15,9 @@ function SpecificHotelUser() {
 
     let {street_name}=location.state;
     let {hotel_description}=location.state;
+    let {hotel_name}=location.state;
+    let {city_name}=location.state;
+    let {star_number}=location.state;
 
     return (
         <>
@@ -22,6 +25,9 @@ function SpecificHotelUser() {
 
         <div class='contentdiv'>
             <div class='Content'>
+            <h2 className='contenttitle'>{hotel_name}</h2>
+            <p className='contenttitle'>{city_name} {street_name}</p>
+            <p className='contenttitle'>Stars: {star_number} &#9733;</p>
             <p>{hotel_description}</p>
             </div>
             <div class='ContentRoomTable'>

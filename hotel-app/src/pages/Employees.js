@@ -3,6 +3,7 @@ import Cards from '../components/Cards';
 import './AdminHome.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import AdminNavigation from '../components/AdminNavigation';
 
 function Employees() {
 
@@ -16,7 +17,7 @@ function Employees() {
 
     const GetingHotels=async()=>
     {
-        const res=await axios.get("http://localhost/proba/index.php",{
+        const res=await axios.get("http://localhost/proba/index.php?admin="+window.pom,{
         method:"GET",
         headers: { "Content-Type": "application/json", }
         }
@@ -24,6 +25,8 @@ function Employees() {
          setHotels(res.data);
     }
     return (
+        <>
+        <AdminNavigation></AdminNavigation>
         <div className='maindiv'>
             {
                 hotels.map(obj=>(
@@ -42,6 +45,7 @@ function Employees() {
                     ))
             }
         </div>
+        </>
     );
 }
 

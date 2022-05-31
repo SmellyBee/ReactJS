@@ -1,6 +1,11 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer'; 
+import CleaningRoom from '../components/CleaningRoom';
+import RoomService from '../components/RoomService';
+import RestoranSeat from '../components/RestoranSeat';
+import './Activities.css';
+
 function Activities(props)
 {
     return(
@@ -11,18 +16,20 @@ function Activities(props)
 
         <div class='Content-activities'>
 
+            <CleaningRoom></CleaningRoom>
+
         </div>
 
         <div class='Content-activities'>
+
+            <RoomService></RoomService>
             
         </div>
 
         <div class='Content-activities'>
+
+            <RestoranSeat></RestoranSeat>
             
-        </div>
-
-        <div class='Content-activities'>
-
         </div>
 
         </div>

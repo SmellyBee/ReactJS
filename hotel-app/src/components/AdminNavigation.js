@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navigation.css';
 import { useNavigate } from 'react-router-dom';
-function Navigation() {
+function AdminNavigation() {
 
 const navigate=useNavigate();  
 
@@ -32,7 +32,7 @@ const navCancel=()=>{
         <>
         <header class="header">
         <div class="brand">
-        <a onClick={()=>navigate('/')} class="brand-logo">
+        <a onClick={()=>navigate('/admin')} class="brand-logo">
             <img src="logo2.webp" alt="" width="120px" height='100px'/>
         </a>
         <div class="nav-burger" id="nav-burger" onClick={navBurger}>
@@ -44,9 +44,9 @@ const navCancel=()=>{
       </div>
       
       <nav class="nav is-active" id="nav">
-        <a onClick={()=>navigate('/')} class="nav-link">Home</a>
-        <a onClick={()=>navigate('/allhotels-view')} class="nav-link">Hotels</a>
-        <a onClick={()=>navigate('/activities')} class="nav-link">Activities</a>
+        <a onClick={()=>navigate('/admin')} class="nav-link">Home</a>
+        <a onClick={()=>navigate('/allhotels')} class="nav-link">Hotels</a>
+        <a onClick={()=>navigate('/employees')} class="nav-link">Employees</a>
         <a onClick={()=>navigate('/login')} class="nav-link">Login/Sign Up</a>
       </nav>
       
@@ -57,4 +57,4 @@ const navCancel=()=>{
     );
 }
 
-export default Navigation;
+export default AdminNavigation;

@@ -5,6 +5,7 @@ import './AdminHome.css'
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import AdminNavigation from '../components/AdminNavigation';
 
 function Employees_In_One_Hotel() {
 
@@ -30,6 +31,7 @@ function Employees_In_One_Hotel() {
     }
     return (
         <>
+        <AdminNavigation></AdminNavigation>
         <FormNewEmployee street={street_name} emp={GetingEmployees}></FormNewEmployee>
         <EmployeeTable street={street_name} emp={employees}></EmployeeTable>
         </>

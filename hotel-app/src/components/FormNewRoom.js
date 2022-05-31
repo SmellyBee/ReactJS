@@ -2,6 +2,7 @@ import React from 'react';
 import './FormNewHotel.css'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+
 function FormNewRoom(props) { 
 
   const location = useLocation();
@@ -99,6 +100,14 @@ function FormNewRoom(props) {
             hotelStreetAndNumber:state.street,
             status:'Slobodna'
           }
+          
+          for(var i=1;i<8;i++)
+          {
+            let y=document.getElementById(i);
+            y.className='input';
+            y.value='';
+          }
+
             axios.post('http://localhost/proba/CRUD_room.php',room).then(response=>alert("Room added"));
         }
 

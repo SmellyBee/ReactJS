@@ -86,6 +86,10 @@ body
 {
     color: #f5ba1a;
 }
+.link:hover
+{
+    cursor: pointer;
+}
 
 .ContentRoomTable
 {

@@ -43,6 +43,12 @@ function FormUpdateEmployee(props){
          state.password=value
          
       }
+
+      const getOption=(event)=>{
+        let newValue = event.nativeEvent.target.value;
+        state.position=newValue;
+      }
+      
       const handleSubmit=(event)=>{
           let check=0;
           if(state.name=='')
@@ -103,11 +109,21 @@ function FormUpdateEmployee(props){
                 }
             }));
             
-            
-          }
-            
+          }     
   
       }
+
+    const handleDelete = ()=>{
+
+      axios.delete("http://localhost/proba/CRUD_employee.php?username="+username+"&hotelStreetAndNumber="+hotelStreetAndNumber)
+      .then( navigate('/employees_in_one_hotel',{
+        state:
+        {
+            street_name:hotelStreetAndNumber
+        }}));
+    }
+
+
       return(
           <div className='form_div'>
   
@@ -122,10 +138,6 @@ function FormUpdateEmployee(props){
               </div>
   
               <div class="input_field">
-              <input placeholder="Employee position" required  className='input' defaultValue={position} onChange={getValue} name='employee_position' id='3'/>
-              </div>
-
-              <div class="input_field">
               <input placeholder="Employee username" required  className='input' defaultValue={username} onChange={getValue} name='employee_username' id='5'/>
               </div>
 
@@ -136,8 +148,21 @@ function FormUpdateEmployee(props){
               <div class="input_field">
                 <input type='time'  className='input' onChange={getValue} defaultValue={workingTime} name='working_time' id='4'/>
               </div>
+
+              <div class="select">
+               <p>Employee position</p>
+                <select onChange={getOption}>
+                <option value={position} selected disabled hidden>{position}</option>
+                  <option value={'Cistac'}>Cistac</option>
+                  <option value={'Room service'}>Room service</option>
+                  <option value={'Restorant manager'}>Restorant manager</option>
+                </select>
+                <div class="select_arrow"></div>
+              </div>
   
               <button className='button' onClick={handleSubmit}>Update Employee</button>
+
+              <button className='button' onClick={handleDelete}>Delete Employee</button>
   
           </div>
       )

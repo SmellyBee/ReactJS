@@ -7,7 +7,6 @@ import { Navigate, useNavigate } from 'react-router-dom';
 function Home() {
 
     const navigate=useNavigate();
-
     return (
         <>
         <Navigation></Navigation>

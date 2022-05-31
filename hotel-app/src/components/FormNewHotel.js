@@ -8,7 +8,7 @@ function FormNewHotel(){
 
   const navigate=useNavigate();
 
-  const addHotel = (hotelName,cityName,noStars,streetAndNumber,hotelDescription) => {
+  const addHotel = async (hotelName,cityName,noStars,streetAndNumber,hotelDescription) => {
     const requestOptions = {
       method : 'POST',
       mode : 'no-cors',
@@ -21,11 +21,13 @@ function FormNewHotel(){
         'cityName' : cityName,
         'noStars' : noStars,
         'streetAndNumber' : streetAndNumber,
-        'hotelDescription': hotelDescription
+        'hotelDescription': hotelDescription,
+        'admin': window.pom
       })
     };
-    fetch('http://localhost/proba/index.php',requestOptions);
-   }
+    await fetch('http://localhost/proba/index.php',requestOptions).then(alert("New Hotel added"),navigate('/allhotels'));
+
+  }
 
    const state={
        hotel:'',
@@ -81,8 +83,7 @@ function FormNewHotel(){
         alert("Fiil red fields");
         else
         { 
-        addHotel(state.hotel,state.city,state.star,state.street,state.description);
-         navigate('/allhotels');   
+        addHotel(state.hotel,state.city,state.star,state.street,state.description);  
         }
 
     }

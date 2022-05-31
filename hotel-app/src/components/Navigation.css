@@ -17,6 +17,9 @@
     text-decoration: none;
     color: #212529;
   }
+  .brand-logo:hover{
+    cursor: pointer;
+  }
   .nav {
     padding: 10px 30px;
     margin-top: 20px;
@@ -33,6 +36,7 @@
     opacity: 0.9;
     color: #f5ba1a;
     border-bottom: 2px solid #f5ba1a;
+    cursor: pointer;
   }
   .is-active {
     display: none;

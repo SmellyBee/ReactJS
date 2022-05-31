@@ -17,10 +17,13 @@ function Login() {
         headers: { "Content-Type": "application/json", }
         }
         ).then(response=>{
-            Proba2(response.data.username);
-            alert(response.data.message);
+            window.pom=response.data.username;
             if(response.data.message=="Succesful")
-                navigate('/');
+            {
+                alert("Succesful");
+                navigate(response.data.route);
+            }
+            else alert("Incorrect login");
         });
     };
 

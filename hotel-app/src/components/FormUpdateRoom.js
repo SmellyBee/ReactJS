@@ -2,9 +2,12 @@ import React from 'react';
 import './FormNewHotel.css'
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 function FormUpdateRoom(props) { 
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   let {street_name}=location.state;
   let {room_capacity}=location.state;
@@ -14,6 +17,7 @@ function FormUpdateRoom(props) {
   let { pic2}=location.state;
   let { pic3}=location.state;
   let { pic4}=location.state;
+
 
 
     const state={
@@ -112,15 +116,21 @@ function FormUpdateRoom(props) {
             streetAndNumber:state.street,
             status:'Slobodna'
           }
-          axios.put("http://localhost/proba/CRUD_room.php?status=Slobodna&costPerDay="+state.cost+"&currRoomNumber="+state.old_number+"&currHotelsan="+state.street+"&picture1="+state.picature1+"&picture2="+state.picature2+"&picture3="+state.picature3+"&picture4="+state.picature4+"&roomCapacity="+state.capacity+"&roomNumber="+state.number+"&streetAndNumber="+state.street)
-          .then(responce=>alert("RoomUpdated"));
-        }
 
-    }
+          axios.put("http://localhost/proba/CRUD_room.php?status=Slobodna&costPerDay="+state.cost+"&currRoomNumber="+state.old_number+"&currHotelsan="+state.street+"&picture1="+state.picature1+"&picture2="+state.picature2+"&picture3="+state.picature3+"&picture4="+state.picature4+"&roomCapacity="+state.capacity+"&roomNumber="+state.number+"&streetAndNumber="+state.street)
+          .then(response=>alert("RoomUpdated"),navigate('/allhotels'));
+        }
+      }
+
+      const handleDelete = (event)=>{
+        axios.delete("http://localhost/proba/CRUD_room.php?roomNumber="+state.old_number+"&hotelStreetAndNumber="+state.street)
+        .then(navigate('/allhotels'));
+      }
 
 
     return (
     <>
+
     <div className='form_div'>
 
     <h2>Update Room</h2>
@@ -154,6 +164,8 @@ function FormUpdateRoom(props) {
     </div>
 
     <button className='button' onClick={handleSubmit} >Update Room</button>
+
+    <button className='button' onClick={handleDelete} >Delete Room</button>
 
     </div>
     </>

@@ -37,6 +37,12 @@ function FormUpdateHotel(props){
        if(name=='description')
        state.description=value
     }
+
+    const getOption=(event)=>{
+      let newValue = event.nativeEvent.target.value;
+      state.star=newValue;
+    }
+
     const handleSubmit=(event)=>{
         let check=0;
         if(state.hotel=='')
@@ -71,6 +77,11 @@ function FormUpdateHotel(props){
             .then(navigate('/allhotels'));
         }
     }
+
+   const handleDelete =(event)=>{
+     axios.delete("http://localhost/proba/index.php?admin="+window.pom+"&hotelStreetAndNumber="+state.oldstreet)
+     .then(navigate('/allhotels'));
+   }
     return(
         <div className='form_div'>
 
@@ -94,7 +105,7 @@ function FormUpdateHotel(props){
 
             <div class="select">
              <p>Select number of stars</p>
-                <select>
+                <select onChange={getOption}>
                 <option value={star_number} selected disabled hidden>Star {star_number}</option>
                   <option value={"1"}>Star 1</option>
                   <option value={"2"}>Star 2</option>
@@ -106,6 +117,8 @@ function FormUpdateHotel(props){
               </div>
 
             <button className='button' onClick={handleSubmit}>Update Hotel</button>
+
+            <button className='button' onClick={handleDelete}>Delete Hotel</button>
 
         </div>
     )
