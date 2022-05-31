@@ -21,10 +21,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $data = json_decode(file_get_contents('php://input'), true);
     //$$sanitize data i ostalo za sve
     //$$proveri da li vec ta soba postoji 
+
+    $check=$tRooms->findOne(array('streetAndNumber'=>$data['hotelStreetAndNumber'],'roomNumber' => $data['roomNumber']));
+    if($check==null)
+    {
+
     $result = $tRooms->insertOne(['roomCapacity' => $data['roomCapacity'],'roomNumber' => $data['roomNumber'],'costPerDay' => $data['costPerDay'],
         'picture1' => $data['picture1'],'picture2' => $data['picture2'],'picture3' => $data['picture3'],'picture4' => $data['picture4'],
         'streetAndNumber' => $data['hotelStreetAndNumber'],'status' => $data['status']]);
         print_r('upisano u bazu');
+    }    
 }
 else if($_SERVER['REQUEST_METHOD'] == 'GET')
 {
@@ -63,7 +69,16 @@ else if($_SERVER['REQUEST_METHOD'] == 'PUT')
          'picture4'=>$_GET['picture4'],'streetAndNumber'=>$_GET['streetAndNumber']
         ]]
     );
-             
+}
+
+else if($_SERVER['REQUEST_METHOD'] == 'DELETE') // ovo je novo, logika za delete
+{
+    $data = json_decode(file_get_contents('php://input'), true);
+   
+        $tRooms->deleteOne([
+            "roomNumber" => $_GET['roomNumber'],
+            "streetAndNumber" => $_GET['hotelStreetAndNumber']
+        ]);
     
 }
 

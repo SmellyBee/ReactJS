@@ -19,27 +19,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 
 
+    $check=$tGuests->findOne(array('username' => $data['username']));
+    if($check==null)
+    {
     
-    $guestFromDb = $tGuests->findOne([
-        "username" => $data['username']
-    ]);
-    if($guestFromDb != null)
-    {
-        echo json_encode('Korisnik vec postoji');
-        return;
-    }
-    else
-    {
-
     $p = $data['password'];
     $data['password'] = password_hash($data['password'],PASSWORD_DEFAULT);
 
 
     $result = $tGuests->insertOne(['username' => $data['username'],'password' => $data['password'],'firstName' => $data['firstName'],
     'lastName' => $data['lastName'],'email' => $data['email'],'zipCode' => $data['zipCode'],
-    'isReserved' => 0,'isHere' => 0,'startDate' => null,'endDate' => null,
-    'hotelStreetAndNumber' => null]);
+    'roomNumber' => null,'startDate' => null,'endDate' => null,
+    'hotelStreetAndNumber' => null ,'status'=>'guest']);
     echo('Upisano u bazu');
+
+    }
+    else
+    {
+        echo http_response_code(201);
     }
     
 }

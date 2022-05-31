@@ -15,20 +15,45 @@ $tEmp = $hotelDb->Employees;
 $tHotels = $hotelDb->Hotels;
 $tGuests = $hotelDb->Guests;
 
+if($_SERVER['REQUEST_METHOD'] == 'GET')
+{
     $data = json_decode(file_get_contents('php://input'),true);
 
-    $updateResultEmployee = $tEmp->updateOne(
-        [ 'username' => $data['oldusername'] ], //where
-        [ '$set' =>['name' => $data['name'],'lastName'=>$data['lastName'],'workspace' => $data['workspace'],
-        'workingTimeStart'=>$data['workingTimeStart'] ,'username'=>$data['username'],'password'=>$data['password']
-        ,'hotelStreetAndNumber' => $data['hotelStreetAndNumber']
-        ]]);
+    $isEmp = $tEmp->findOne(['username'=>$_GET['username']]);
+    if($isEmp != null)
+    {
+    $arr=[];
 
-        $p = password_hash($data['password'],PASSWORD_DEFAULT);
+    foreach($isEmp['tasks'] as $task)
+    {
+        $el = [];
+        $el['task'] = $task;
+        array_push($arr,$el);
+    }
 
-        $updateResultEmployeeGuests = $tGuests->updateOne(
-        [ 'username' => $data['oldusername'] ],
-        [ '$set' =>['username'=>$data['username'],'password'=>$p,'status'=>'employee'
-        ]]);
-        
-    
+    echo json_encode($arr);
+    }
+    else
+    echo("Erroor");
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'DELETE')
+{
+    $isEmp = $tEmp->findOne(['username'=>$_GET['username']]);
+
+    foreach($isEmp['tasks'] as $task)
+    {
+        if($task == $_GET['task'])
+        {
+          $updateResultEmployee = $tEmp->updateOne(
+          [ 'username' => $isEmp->username ], //where
+          [ '$pull' =>[ "tasks"=>$task ]]);
+
+          echo http_response_code(201);
+        }
+    }
+
+}  
+
+
+?>        

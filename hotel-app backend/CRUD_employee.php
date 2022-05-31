@@ -12,14 +12,34 @@ header( "Content-type: application/json" );
 $client = new MongoDB\Client; // Povezujemo se sa celim klijenom koji je upaljen 
 $hotelDb = $client->hotel_app; //$$$ Ovo ovde zavisi kako ti se zove baza u mongo  
 $tEmp = $hotelDb->Employees;
+$tGuests = $hotelDb->Guests;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {     
     $data = json_decode(file_get_contents('php://input'), true);
-  
+
+    $check=$tEmp->findOne(array('username'=>$data['username']));
+    if($check==null)
+    {
+
+        $timestamp = strtotime($data['workingTimeStart']) + 480*60;
+
+        $time = date('H:i', $timestamp);
+
+
         $result = $tEmp->insertOne(['name' => $data['name'],'lastName'=>$data['lastName'],'workspace' => $data['workspace'],
-        'workingTimeStart'=>$data['workingTimeStart'] ,'username'=>$data['username'],'password'=>$data['password']
-        ,'hotelStreetAndNumber' => $data['hotelStreetAndNumber']]);
+        'workingTimeStart'=>$data['workingTimeStart'],'workingTimeEnd'=>$time,'username'=>$data['username'],
+        'password'=>$data['password'],'hotelStreetAndNumber' => $data['hotelStreetAndNumber'],'tasks'=>[]]);
+
+        $p = password_hash($data['password'],PASSWORD_DEFAULT);
+
+        $result2 = $tGuests->insertOne(['username'=>$data['username'],'password'=>$p,'status'=>'employee',
+        'hotelStreetAndNumber' => $data['hotelStreetAndNumber']]);
+    }
+    else
+    {
+        echo http_response_code(201);
+    }
 
 }
 
@@ -46,6 +66,21 @@ if ($_SERVER['REQUEST_METHOD'] == "GET")
     echo(json_encode($arr_data));
 }
 
+else if ($_SERVER['REQUEST_METHOD'] == "DELETE") //  Ovde je sve novo 
+{
+    $data = json_decode(file_get_contents('php://input'), true);
+
+
+        $result = $tEmp->deleteOne([
+            "username" => $_GET['username'],
+            "hotelStreetAndNumber" => $_GET['hotelStreetAndNumber']
+        ]);
+        $tGuests->deleteOne([
+            "username" => $_GET['username'],
+            "status" => "employee"
+        ]);
+        
+}
 
 
 ?>

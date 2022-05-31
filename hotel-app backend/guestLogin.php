@@ -26,7 +26,22 @@ if($guestFromDb == null)
     return;
 }
 if(password_verify($_GET['password'],$guestFromDb->password))
-echo json_encode(["username" => $_GET['username'] , "message" => "Succesful"]);
-else  echo json_encode(["username" =>"Incorrect Login", "message" => "Something went wrong"]);
+{
+    if($guestFromDb->status=='guest')
+    {
+        echo json_encode(["username" => $_GET['username'] , "message" => "Succesful" ,"route"=>"/"]);
+    }
+    if($guestFromDb->status=='employee')
+    {
+        echo json_encode(["username" => $_GET['username'] , "message" => "Succesful" ,"route"=>"/employee-home"]);
+    }
+    if($guestFromDb->status=='admin')
+    {
+        echo json_encode(["username" => $_GET['username'] , "message" => "Succesful" ,"route"=>"/admin"]);
+    }
+     
+}
+
+else  echo json_encode(["username" => $_GET['username'] , "message" => "ERROR" ,"route"=>"/admin"]);
 
 }

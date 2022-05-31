@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET")
     $cursor = $tHotels->find();
     foreach($cursor as $doc)
     {
+        if($doc->admin==$_GET['admin'])
+        {
         $h=utf8_encode($doc['hotelName']);
         $c=utf8_encode($doc['cityName']);
         $s=utf8_encode($doc['noStars']);
@@ -41,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET")
         utf8_encode('streetAndNumber')=>$n,utf8_encode('hotelDescription')=>$d);
         array_push($arr_data,$list[0]);
         unset($list);
+        }
     }
     
     echo json_encode($arr_data);
@@ -52,9 +55,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     //sanitize data i ostalo
     $data = json_decode(file_get_contents('php://input'), true);
 
+    $check=$tHotels->findOne(array('streetAndNumber'=>$data['streetAndNumber'],'cityName' => $data['cityName']));
+    if($check==null)
+    {
+     $result = $tHotels->insertOne(['hotelName' => $data['hotelName'],'cityName' => $data['cityName'],'noStars' => $data['noStars'],
+        'streetAndNumber' => $data['streetAndNumber'],'hotelDescription'=>$data['hotelDescription'],'admin'=>$data['admin']]);
+    }
+    else
+    {
+        $arrRes=[];
+        array_push($arrRes,['message'=>"Hotel on that StreetAndNumber alrady exists"]);
+        echo json_encode($arrRes);
+    }
     
-    $result = $tHotels->insertOne(['hotelName' => $data['hotelName'],'cityName' => $data['cityName'],'noStars' => $data['noStars'],
-    'streetAndNumber' => $data['streetAndNumber'],'hotelDescription'=>$data['hotelDescription']]);
     
 }
 
@@ -74,9 +87,42 @@ else if($_SERVER['REQUEST_METHOD'] == "PUT")
             ['streetAndNumber' => $_GET['oldStreet']],
             ['$set' => ['streetAndNumber' => $_GET['streetAndNumber']]]
         );
+
+        $tEmployees = $hotelDb->Employees;
+        $updateResultEmployee = $tEmployees->updateMany(
+            ['hotelStreetAndNumber' => $_GET['oldStreet']],
+            ['$set' => ['hotelStreetAndNumber' => $_GET['streetAndNumber']]]
+        );
     }
     
 
+}
+
+else if($_SERVER['REQUEST_METHOD'] == "DELETE") //novo 
+{
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    $tEmp = $hotelDb->Employees;
+    $tGuests = $hotelDb->Guests;
+    $tRooms = $hotelDb->Rooms;
+
+    $tHotels->deleteOne([
+        "admin" => $_GET['admin'],
+        "streetAndNumber" => $_GET['hotelStreetAndNumber']
+    ]);
+    //nadji empove i u guest preko username-a
+
+    $tEmp->deleteMany([
+        'hotelStreetAndNumber' => $_GET['hotelStreetAndNumber']
+    ]);
+
+    $tGuests->deleteMany([
+        'hotelStreetAndNumber' => $_GET['hotelStreetAndNumber']
+    ]);
+
+    $tRooms->deleteMany([
+        'streetAndNumber' => $_GET['hotelStreetAndNumber']
+    ]);
 }
 
  ?>
